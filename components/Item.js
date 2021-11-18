@@ -16,7 +16,13 @@ const Item = ({ isExpanded, setSelected, id, title, type, img }) => {
           )}
         </div>
         <motion.div layoutId={id + 'image'} className='img-box'>
-          <Image src={img} layout='fixed' alt='image' />
+          <Image
+            placeholder='blur'
+            priority
+            src={img}
+            layout='fixed'
+            alt='image'
+          />
         </motion.div>
       </motion.div>
 
