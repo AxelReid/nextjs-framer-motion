@@ -1,0 +1,183 @@
+:root {
+  --bg: #000;
+  --color-primary: #f7f7f7;
+  --color-secondary: #a1a1a1;
+  --bg-secondary: #242628;
+  --border-bottom: #444;
+  --bg-btn: #0099ff;
+}
+
+@import './variables';
+@import './list.scss';
+@import './item.scss';
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+body {
+  height: 100vh;
+  background: var(--bg);
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+label {
+  color: var(--color-primary);
+  &.secondary {
+    color: var(--color-secondary);
+  }
+}
+
+main {
+  position: relative;
+  margin: 0 auto;
+  width: Min(1000px, 100%);
+}
+
+header {
+  width: 100%;
+  height: 80px;
+  padding: 0 20px;
+  @include flexBox(center, space-between);
+  border-bottom: 1px solid var(--border-bottom);
+  h2 {
+    font-size: Clamp(1rem, 5vw, 1.5rem);
+  }
+  ul {
+    @include flexBox;
+    gap: 20px;
+    a {
+      font-size: 1.1rem;
+    }
+  }
+  .avatar {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}
+
+// *******************************
+.phone {
+  position: relative;
+  overflow: hidden;
+  max-width: 310px;
+  height: 600px;
+  border-radius: 45px;
+  border: 10px solid #313035;
+  margin: 40px auto 0 auto;
+  padding: 50px 15px;
+  background-image: url('../public/images/iPhone-12-Pro-Light-Wallpaper-4.jpg');
+  background-position: center;
+  background-size: cover;
+  aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+  }
+  section {
+    z-index: 10;
+    width: 100%;
+    padding: 0 5px;
+    @include flexBox(center, flex-start);
+    flex-wrap: wrap;
+    gap: 15px;
+    transition: opacity 0.3s;
+    opacity: 1;
+    &.hide {
+      opacity: 0;
+    }
+  }
+  &:before,
+  &:after {
+    z-index: 90;
+    position: absolute;
+    content: '';
+    background: #313035;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &:before {
+    height: 30px;
+    top: 0;
+    border-radius: 0 0 20px 20px;
+  }
+  &:after {
+    bottom: 6px;
+    height: 8px;
+    box-shadow: 0 0 1px black;
+    border-radius: 40px;
+  }
+  .dot {
+    z-index: 10;
+    position: relative;
+    cursor: pointer;
+    background: rgba(255, 255, 220, 0.2);
+    padding: 7px;
+    width: 50px;
+    height: 50px;
+    border-radius: 13px;
+    @include flexBox(flex-start, flex-start);
+    flex-wrap: wrap;
+    gap: 2px;
+    span {
+      background: rgba(0, 0, 0, 0.1);
+      width: 29%;
+      border-radius: 4px;
+      aspect-ratio: 1;
+    }
+    &.expended {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: auto;
+      gap: 20px;
+      background: none;
+      @include flexBox;
+      span {
+        width: 60px;
+        height: 60px;
+        border-radius: 20px;
+      }
+    }
+  }
+}
